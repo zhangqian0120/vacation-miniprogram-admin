@@ -22,6 +22,15 @@ module.exports = {
       warnings: false,
       errors: true
     },
+    proxy: {
+      '/dev-api': {
+        target: 'http://192.168.203.112:8082', // 后台接口域名
+        changeOrigin: true, // 是否跨域
+        pathRewrite: {
+          '^/dev-api': ''
+        }
+      }
+    },
     before: require('./mock/mock-server.js')
   },
   configureWebpack: {
